@@ -160,7 +160,7 @@ function renderLove(ctx) {
   love2.className = `animate__animated animate__rotateIn`;
 
   let radian = 0; // 设置初始弧度
-  const radian_add = Math.PI / 80; // 设置弧度增量
+  const radian_add = Math.PI / 30; // 设置弧度增量
 
   const marginTop = Math.round(WINDOW_HEIGHT / 2);
   const marginLeft = Math.round(WINDOW_WIDTH / 2);
@@ -178,6 +178,9 @@ function renderLove(ctx) {
     ctx.stroke(); //对路径描边
     if (radian <= (2*Math.PI)) { //绘制完整的心型线后取消间歇调用 
       requestAnimationFrame(heart);
+    } else {
+      love1.className = "animate__animated animate__heartBeat animate__infinite";
+      love2.className = "animate__animated animate__heartBeat animate__infinite";
     }
   }
   heart();
