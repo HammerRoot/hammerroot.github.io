@@ -24,7 +24,7 @@ window.onload = function () {
 
   let counter = setInterval(() => {
     const number = COUNTS.shift();
-    alert(number);
+    alert(number && number.num);
     if (number) {
       renderCount(context, number);
     } else {

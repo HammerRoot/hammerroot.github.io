@@ -160,7 +160,7 @@ function getScreenInfo() {
 function _renderSky() {
     //获取屏幕大小
     const size = getScreenInfo();
-    alert(`size: ${size}`);
+    alert(`winWidth: ${size.winWidth} winHeight: ${size.winHeight}`);
     screenW = size.winWidth;
     screenH = size.winHeight;
 
