@@ -4,9 +4,9 @@
 
 // requestAnimationFrame的向下兼容处理
 if (!window.requestAnimationFrame) {
-  window.requestAnimationFrame = function(fn) {
-      setTimeout(fn, 17);
-  };
+    window.requestAnimationFrame = function (fn) {
+        setTimeout(fn, 17);
+    };
 }
 
 // 定义变量
@@ -112,12 +112,54 @@ Star.prototype.draw = function (context) {
 }
 
 /**
+ * 获取窗口大小信息
+ */
+function getScreenInfo() {
+    //获取窗口宽度
+    if (window.innerWidth) {
+        winWidth = window.innerWidth;
+    } else if ((document.body) && (document.body.clientWidth)) {
+        winWidth = document.body.clientWidth;
+    }
+
+    //获取窗口高度
+    if (window.innerHeight) {
+        winHeight = window.innerHeight;
+    } else if ((document.body) && (document.body.clientHeight)) {
+        winHeight = document.body.clientHeight;
+    }
+
+    //通过深入Document内部对body进行检测，获取窗口大小
+    if (document.documentElement &&
+        document.documentElement.clientHeight &&
+        document.documentElement.clientWidth) {
+        winHeight = document.documentElement.clientHeight;
+        winWidth = document.documentElement.clientWidth;
+    }
+
+    // 将上述方法简化
+    // screenW = window.innerWidth ||
+    //     document.body.clientWidth ||
+    //     document.documentElement.clientWidth;
+
+    // screenH = window.innerHeight ||
+    //     document.body.clientHeight ||
+    //     document.documentElement.clientHeight;
+
+    return {
+        'winWidth': winWidth,
+        'winHeight': winHeight
+    }
+}
+
+
+/**
  * canvas设置，修复窗口变化，画布大小不变的问题
  */
 function _renderSky() {
     //获取屏幕大小
-    screenW = document.body.clientWidth;
-    screenH = document.body.clientHeight;
+    screenW = getScreenInfo().winWidth;
+    screenH = getScreenInfo().winHeight;
 
     canvas.width = screenW;
     canvas.height = screenH;
