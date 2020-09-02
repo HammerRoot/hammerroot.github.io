@@ -20,7 +20,6 @@ let canvas,
 const numStars = 2000;
 
 function RenderStarSky(starsky) {
-    alert('RenderStarSky')
     //获取canvas
     canvas = starsky;
     // 设置画布
@@ -160,7 +159,6 @@ function getScreenInfo() {
 function _renderSky() {
     //获取屏幕大小
     const size = getScreenInfo();
-    alert(`winWidth: ${size.winWidth} winHeight: ${size.winHeight}`);
     screenW = size.winWidth;
     screenH = size.winHeight;
 

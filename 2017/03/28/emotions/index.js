@@ -24,7 +24,6 @@ window.onload = function () {
 
   let counter = setInterval(function() {
     const number = COUNTS.shift();
-    alert(number && number.num);
     if (number) {
       renderCount(context, number);
     } else {
@@ -45,7 +44,10 @@ function renderCount(context, number) {
 function removeWelcome() {
   let welcome = document.getElementById('welcome');
   welcome.className = "welcome animate__animated animate__lightSpeedOutRight";
-  welcome = null;
+  welcome.addEventListener('animationend', function() {
+    document.body.removeChild(welcome);
+    welcome = null;
+  });
 }
 
 // 数字原地爆炸
@@ -126,9 +128,7 @@ function renderStarSky(ctx) {
   let starsky = document.getElementById('starsky');
   starsky.className = "animate__animated animate__fadeIn";
   RenderStarSky(starsky); // 渲染星空 star.js
-  console.log('RenderStarSky 后');
   starsky.addEventListener('animationend', function() {
-    console.log('onanimationend 后');
     renderLove(ctx);
   });
 }
@@ -144,7 +144,7 @@ function renderLove(ctx) {
   love2.className = `animate__animated animate__rotateIn`;
 
   let radian = 0; // 设置初始弧度
-  const radian_add = Math.PI / 120; // 设置弧度增量
+  const radian_add = Math.PI / 30; // 设置弧度增量
 
   const marginTop = Math.round(WINDOW_HEIGHT / 2);
   const marginLeft = Math.round(WINDOW_WIDTH / 2);
