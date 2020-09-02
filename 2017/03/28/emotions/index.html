@@ -2,13 +2,105 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>canvas动画效果分享</title>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+    />
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .hide {
+            display: none !important;
+        }
+
+        #canvas {
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            z-index: 3;
+        }
+
+        #starsky {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #000;
+        }
+
+        .welcome {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 500px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 46px;
+            font-family: 'Work Sans', sans-serif;
+            color: #efa8e4;
+            text-shadow: 0px 0px 12px #97e5ef;
+        }
+
+        .ask {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 500px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 46px;
+            font-family: 'Work Sans', sans-serif;
+            color: #efa8e4;
+        }
+
+        #love1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 4;
+            width: 90px;
+            height: 90px;
+            margin-top: -45px;
+            margin-left: -130px;
+        }
+
+        #love2 {
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            z-index: 4;
+            width: 90px;
+            height: 90px;
+            margin-top: -45px;
+            margin-right: -130px;
+        }
+    </style>
 </head>
 <body>
-    <canvas id="canvas" style="display:block;margin:50px auto;">
+    <canvas id="starsky" class="hide">
+        当前浏览器不支持Canvas，请更换浏览器后再试
+    </canvas>
+    <div id="welcome" class="welcome animate__animated animate__lightSpeedInLeft">
+        Are You Ready ？
+    </div>
+    <canvas id="canvas">
         当前浏览器不支持Canvas，请更换浏览器后再试
     </canvas>
 
+    <div class="ask hide">一起看星星吗？朋友</div>
+    <img src="./image/1.jpg" alt="情侣1" id="love1" class="hide" />
+    <img src="./image/2.jpg" alt="情侣2" id="love2" class="hide" />
+
+    <script src="star.js"></script>
     <script src="digit.js"></script>
     <script src="countdown.js"></script>
 </body>
