@@ -22,23 +22,6 @@ window.onload = function () {
   canvas.width = WINDOW_WIDTH;
   canvas.height = WINDOW_HEIGHT;
 
-  // 1. 渲染一个数字
-  // renderChar(context, DIGIT[8], 'red');
-
-  // 2. 小球抛物线动画
-  // balls = [{
-  //   x: MARGIN_LEFT,
-  //   y: MARGIN_TOP,
-  //   g: 2.4,
-  //   vx: 5,
-  //   vy: -10,
-  //   color: 'skyblue',
-  // }];
-  // setInterval(() => {
-  //   renderBalls(context);
-  //   updateBalls();
-  // }, 50);
-
   let counter = setInterval(() => {
     const number = COUNTS.shift();
     if (number) {
@@ -49,8 +32,6 @@ window.onload = function () {
       numberBoom(context); // 数字原地爆炸
     }
   }, 1000);
-
-  // renderLove(context);
 }
 
 // 渲染数字
@@ -63,7 +44,10 @@ function renderCount(context, number) {
 function removeWelcome() {
   let welcome = document.getElementById('welcome');
   welcome.className = "welcome animate__animated animate__lightSpeedOutRight";
-  welcome = null;
+  welcome.onanimationend = () => {
+    document.body.removeChild(welcome);
+    welcome = null;
+  };
 }
 
 // 数字原地爆炸
