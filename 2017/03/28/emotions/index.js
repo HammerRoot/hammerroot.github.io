@@ -7,6 +7,7 @@ var COUNTS = [{ num: 3, color: '#ec0101' }, { num: 2, color: '#fddb3a' }, { num:
 var LAST = COUNTS[COUNTS.length - 1];
 var COLORS = ["#33B5E5", "#0099CC", "#AA66CC", "#9933CC", "#99CC00", "#669900", "#FFBB33", "#FF8800", "#FF4444", "#CC0000"];
 var balls = []; // 爆炸小球数组
+let starsky;
 
 window.onload = function () {
   const canvas = document.getElementById('canvas');
@@ -31,30 +32,20 @@ window.onload = function () {
         clearTimeout(a);
       }, 1000);
     } else {
-      removeWelcome(); // 去掉欢迎语
       numberBoom(context); // 数字原地爆炸
     }
   }
 
-  setTimeout(() => {
-    inter();
-  }, 800);
+  inter();
+
+  starsky = document.getElementById('starsky');
+  RenderStarSky(starsky);
 }
 
 // 渲染数字
 function renderCount(context, number) {
   context.clearRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
   renderChar(context, DIGIT[number.num], number.color);
-}
-
-// 去掉欢迎语
-function removeWelcome() {
-  let welcome = document.getElementById('welcome');
-  welcome.className = "welcome animate__animated animate__lightSpeedOutRight";
-  welcome.addEventListener('animationend', function() {
-    document.body.removeChild(welcome);
-    welcome = null;
-  });
 }
 
 // 数字原地爆炸
@@ -132,9 +123,9 @@ function updateBalls() {
 }
 
 function renderStarSky(ctx) {
-  let starsky = document.getElementById('starsky');
+  // let starsky = document.getElementById('starsky');
+  // RenderStarSky(starsky); // 渲染星空 star.js
   starsky.className = "animate__animated animate__fadeIn";
-  RenderStarSky(starsky); // 渲染星空 star.js
   starsky.addEventListener('animationend', function() {
     renderLove(ctx);
   });
@@ -143,7 +134,7 @@ function renderStarSky(ctx) {
 // 表白部分
 function renderLove(ctx) {
   const ask = document.querySelector('.ask');
-  ask.className = "ask";
+  ask.className = "ask animate__animated animate__jackInTheBox";
 
   const love1 = document.getElementById('love1');
   const love2 = document.getElementById('love2');
