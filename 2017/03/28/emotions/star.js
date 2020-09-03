@@ -17,7 +17,7 @@ let canvas,
     stars = [];
 
 // 定义常量
-const numStars = 2000;
+const numStars = 1200;
 
 function RenderStarSky(starsky) {
     //获取canvas

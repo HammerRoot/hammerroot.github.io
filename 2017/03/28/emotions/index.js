@@ -7,7 +7,6 @@ var COUNTS = [{ num: 3, color: '#ec0101' }, { num: 2, color: '#fddb3a' }, { num:
 var LAST = COUNTS[COUNTS.length - 1];
 var COLORS = ["#33B5E5", "#0099CC", "#AA66CC", "#9933CC", "#99CC00", "#669900", "#FFBB33", "#FF8800", "#FF4444", "#CC0000"];
 var balls = []; // 爆炸小球数组
-let starsky;
 
 window.onload = function () {
   const canvas = document.getElementById('canvas');
@@ -37,9 +36,6 @@ window.onload = function () {
   }
 
   inter();
-
-  starsky = document.getElementById('starsky');
-  RenderStarSky(starsky);
 }
 
 // 渲染数字
@@ -58,8 +54,10 @@ function numberBoom(ctx) {
 
     if (balls.length <= 0) {
       renderBalls(ctx);
-      renderStarSky(ctx);
       clearInterval(boom);
+      setTimeout(function() {
+        renderStarSky(ctx);
+      }, 88);
     }
   }, 50);
 }
@@ -123,8 +121,8 @@ function updateBalls() {
 }
 
 function renderStarSky(ctx) {
-  // let starsky = document.getElementById('starsky');
-  // RenderStarSky(starsky); // 渲染星空 star.js
+  let starsky = document.getElementById('starsky');
+  RenderStarSky(starsky); // 渲染星空 star.js
   starsky.className = "animate__animated animate__fadeIn";
   starsky.addEventListener('animationend', function() {
     renderLove(ctx);
